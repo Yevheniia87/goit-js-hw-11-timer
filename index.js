@@ -1,90 +1,5 @@
 "use strict"
 
-// const refs = {
-//     days: document.querySelector('[data-value="days"]'),
-//     hours: document.querySelector('[data-value="hours"]'),
-//     minutes: document.querySelector('[data-value="mins"]'),
-//     seconds: document.querySelector('[data-value="secs"]'),
-// };
-// class CountdownTimer {
-//     constructor({ selector, targetDate }) {
-//         this.selector = document.querySelector(selector);
-//         this.targetDate = targetDate;
-//     };
-//     startTimer() {
-//         setInterval(() => {
-//             const currentTime = Data.now();
-//             const deltaTime = this.targetDate - currentTime;
-          
-//             const days = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
-//             const hours = this.pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-//             const mins = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
-//             const secs = this.pad(Math.floor((time % (1000 * 60)) / 1000));
-//             this.updateClockTime(days, hours, mins, secs);
-//         }, 1000);
-//     };
-//     updateClockTime(days, hours, mins, secs) {
-//         this.selector.querySelector('[data-value="days"]').textContent = days;
-//         this.selector.querySelector('[data-value="hours"]').textContent = hours;
-//         this.selector.querySelector('[data-value="mins"]').textContent = mins;
-//         this.selector.querySelector('[data-value="secs"]').textContent = secs;
-//     };
-    // pad(value) {
-    //     return String(value).padStart(2, '0');
-    // };
-// };
-// new CountdownTimer ({
-//   selector: '#timer-1',
-//   targetDate: new Date('Jul 17, 2019 00:00:00'),
-// });
-
-
-
-
-// function getTimeRemaining(endtime) {
-//   var t = Date.parse(endtime) - Date.parse(new Date());
-//   var seconds = Math.floor((t / 1000) % 60);
-//   var minutes = Math.floor((t / 1000 / 60) % 60);
-//   var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-//   var days = Math.floor(t / (1000 * 60 * 60 * 24));
-//   return {
-//     'total': t,
-//     'days': days,
-//     'hours': hours,
-//     'minutes': minutes,
-//     'seconds': seconds
-//   };
-// }
- 
-// function initializeClock(id, endtime) {
-//   var clock = document.getElementById('timer-1');
-//   var daysSpan = clock.querySelector('[data-value="days"]');
-//   var hoursSpan = clock.querySelector('[data-value="hours"]');
-//   var minutesSpan = clock.querySelector('[data-value="mins"]');
-//   var secondsSpan = clock.querySelector('[data-value="secs"]');
- 
-//   function updateClock() {
-//     var t = getTimeRemaining(endtime);
- 
-//     daysSpan.innerHTML = t.days;
-//     hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-//     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-//     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
- 
-//     if (t.total <= 0) {
-//       clearInterval(timeinterval);
-//     }
-//   }
- 
-//   updateClock();
-//   var timeinterval = setInterval(updateClock, 1000);
-// }
- 
-// var deadline = new Date(Date.parse(new Date()) + 11 * 24 * 60 * 60 * 1000); // for endless timer
-// initializeClock('countdown', deadline);
-const refs = {
-    
-}
 class CountdownTimer {
     constructor({ selector, targetDate }) {
         this.selector = selector;
@@ -127,4 +42,44 @@ const time = new CountdownTimer({
     targetDate: new Date('Dec 31, 2022'),
 }).start();
 
+// function getTimeRemaining(endtime) {
+//   var t = Date.parse(endtime) - Date.parse(new Date());
+//   var seconds = Math.floor((t / 1000) % 60);
+//   var minutes = Math.floor((t / 1000 / 60) % 60);
+//   var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+//   var days = Math.floor(t / (1000 * 60 * 60 * 24));
+//   return {
+//     'total': t,
+//     'days': days,
+//     'hours': hours,
+//     'minutes': minutes,
+//     'seconds': seconds
+//   };
+// }
  
+// function initializeClock(id, endtime) {
+//   var clock = document.getElementById('timer-1');
+//   var daysSpan = clock.querySelector('[data-value="days"]');
+//   var hoursSpan = clock.querySelector('[data-value="hours"]');
+//   var minutesSpan = clock.querySelector('[data-value="mins"]');
+//   var secondsSpan = clock.querySelector('[data-value="secs"]');
+ 
+//   function updateClock() {
+//     var t = getTimeRemaining(endtime);
+ 
+//     daysSpan.innerHTML = t.days;
+//     hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+//     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+//     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+ 
+//     if (t.total <= 0) {
+//       clearInterval(timeinterval);
+//     }
+//   }
+ 
+//   updateClock();
+//   var timeinterval = setInterval(updateClock, 1000);
+// }
+ 
+// var deadline = new Date(Date.parse(new Date()) + 11 * 24 * 60 * 60 * 1000); // for endless timer
+// initializeClock('countdown', deadline);
