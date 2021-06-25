@@ -34,7 +34,11 @@ class CountdownTimer {
        isHours.innerHTML = `${hours}`;
        isMinutes.innerHTML = `${mins}`;
        isSeconds.innerHTML = `${secs}`;
+       if (t.total <= 0) {
+      clearInterval(timeinterval);
+       };
     };
+    
     
 };
 const time = new CountdownTimer({
