@@ -7,13 +7,19 @@ class CountdownTimer {
     };
     start() {
         const startTime = this.targetDate.getTime();
-        setInterval(() => {
+        const timerId = setInterval(() => {
             const currentTime = Date.now();
             const deltaTime = startTime - currentTime;
+            if (deltaTime <= 0) {
+                clearInterval(timerId);
+            }
+            this.getTimeComponents(deltaTime);
             const { days, hours, mins, secs } = this.getTimeComponents(deltaTime);
-            return this.updateClock({ days, hours, mins, secs })
+            return this.updateClock({ days, hours, mins, secs });
         }, 1000);
+
     }
+    
     getTimeComponents(time) {
         const days = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
         const hours = this.pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
@@ -24,27 +30,49 @@ class CountdownTimer {
     pad(value) {
         return String(value).padStart(2, '0');
     };
-   updateClock({ days, hours, mins, secs }) {
-       const clockFace = document.getElementById('timer-1');
-       const isDays = document.querySelector('[data-value="days"]');
-       const isHours = document.querySelector('[data-value="hours"]');
-       const isMinutes = document.querySelector('[data-value="mins"]');
-       const isSeconds = document.querySelector('[data-value="secs"]');
-       isDays.innerHTML = `${days}`;
-       isHours.innerHTML = `${hours}`;
-       isMinutes.innerHTML = `${mins}`;
-       isSeconds.innerHTML = `${secs}`;
-       if (t.total <= 0) {
-      clearInterval(timeinterval);
-       };
-    };
     
+    updateClock({ days, hours, mins, secs }) {
+        const clockFace = document.getElementById('timer-1');
+        const isDays = document.querySelector('[data-value="days"]');
+        const isHours = document.querySelector('[data-value="hours"]');
+        const isMinutes = document.querySelector('[data-value="mins"]');
+        const isSeconds = document.querySelector('[data-value="secs"]');
+        isDays.innerHTML = `${days}`;
+        isHours.innerHTML = `${hours}`;
+        isMinutes.innerHTML = `${mins}`;
+        isSeconds.innerHTML = `${secs}`;
+        // if ({ days, hours, mins, secs } <= 0) {
+        //     isDays.textContent = '--';
+        //     isHours.textContent = '--';
+        //     isMinutes.textContent = '--';
+        //     isSeconds.textContent = '--';
+        // }
+        if (days <= 0) {
+            isDays.textContent = '00';
+        }
+        if (hours <= 0) {
+            isHours.textContent = '00';
+        }
+        if (mins <= 0) {
+            isMinutes.textContent = '00';
+        }
+        if (secs <= 0) {
+            isSeconds.textContent = '00';
+        }
+        
+    }
     
-};
+}
+
 const time = new CountdownTimer({
     selector: '#timer-1',
-    targetDate: new Date('Dec 31, 2022'),
+    targetDate: new Date('Dec 31, 2021'),
 }).start();
+      
+
+
+
+
 
 // function getTimeRemaining(endtime) {
 //   var t = Date.parse(endtime) - Date.parse(new Date());
