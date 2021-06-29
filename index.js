@@ -11,7 +11,9 @@ class CountdownTimer {
             const currentTime = Date.now();
             const deltaTime = startTime - currentTime;
             if (deltaTime <= 0) {
+                document.getElementById('deadline-message').className = "visible";
                 clearInterval(timerId);
+             
             }
             this.getTimeComponents(deltaTime);
             const { days, hours, mins, secs } = this.getTimeComponents(deltaTime);
@@ -32,7 +34,7 @@ class CountdownTimer {
     };
     
     updateClock({ days, hours, mins, secs }) {
-        const clockFace = document.getElementById('timer-1');
+        
         const isDays = document.querySelector('[data-value="days"]');
         const isHours = document.querySelector('[data-value="hours"]');
         const isMinutes = document.querySelector('[data-value="mins"]');
@@ -66,8 +68,9 @@ class CountdownTimer {
 
 const time = new CountdownTimer({
     selector: '#timer-1',
-    targetDate: new Date('Dec 31, 2021'),
+    targetDate: new Date('Jun 28, 2021'),
 }).start();
+
       
 
 

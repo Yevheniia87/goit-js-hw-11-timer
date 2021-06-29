@@ -50,11 +50,22 @@
             padding-top: 5px;
             font-size: 16px;
         }
+
+
+        .deadline-message {
+            display: none;
+            font-size: 24px;
+            font-style: sans-serif;
+            color: #fff;
+        }
     </style>
 </head>
 
 <body>
     <h1 class="countdown-title">Days left until the New Year</h1>
+    <div id="deadline-message" class="deadline-message">
+        Time is up!
+    </div>
     <div class="timer" id="timer-1">
         <div class="field">
             <span class="value" data-value="days">11</span>
